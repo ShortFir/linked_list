@@ -1,10 +1,16 @@
 # frozen_string_literal: true
 
-# Leads to nodes
-class LinkedList
-  def append(value); end
+require_relative 'node'
 
-  def prepend(value); end
+# List made of nodes.rb
+class LinkedList
+  def append(_value)
+    Node.new
+  end
+
+  def prepend(_value)
+    Node.new
+  end
 
   def size; end
 
