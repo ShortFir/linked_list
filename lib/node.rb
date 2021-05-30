@@ -2,18 +2,18 @@
 
 # Nodes for linked_list.rb
 class Node
-  attr_accessor :value, :next_node
+  attr_accessor :next_node, :value
 
-  # def initialize(value, _next_node)
-  #   @value = value
-  #   @next_node = next_node
-  # end
+  def initialize(value = nil, next_node = nil)
+    @value = value
+    @next_node = next_node
+  end
 
   # def value
-  #   nil
+  #   @value
   # end
 
   # def next_node
-  #   nil
+  #   @next_node
   # end
 end
