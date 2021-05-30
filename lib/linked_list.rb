@@ -12,8 +12,7 @@ class LinkedList
     if @head.nil?
       @head = Node.new(value)
     else
-      tail = find_tail
-      tail.next_node = Node.new(value)
+      iterate_list.next_node = Node.new(value)
     end
   end
 
@@ -25,11 +24,7 @@ class LinkedList
     return 0 if @head.nil?
 
     count = 1
-    count_node = @head
-    until count_node.next_node.nil?
-      count_node = count_node.next_node
-      count += 1
-    end
+    iterate_list { count += 1 }
     count
   end
 
@@ -38,7 +33,7 @@ class LinkedList
   end
 
   def tail
-    find_tail.value
+    iterate_list.value
   end
 
   def at(index); end
@@ -49,6 +44,7 @@ class LinkedList
 
   def find(value); end
 
+  # TODO: Rework to use iterate_list?
   def to_s
     return 'nil' if @head.nil?
 
@@ -68,11 +64,25 @@ class LinkedList
 
   private
 
+  # TODO: rework into a yield, proc thingy? Done with 'iterate_list'
   def find_tail
     return @head if @head.nil?
 
     tail_node = @head
     tail_node = tail_node.next_node until tail_node.next_node.nil?
     tail_node
+  end
+
+  # Return the last node in the list
+  # Can take additional code in block
+  def iterate_list
+    return @head if @head.nil?
+
+    node = @head
+    until node.next_node.nil?
+      yield if block_given?
+      node = node.next_node
+    end
+    node
   end
 end
