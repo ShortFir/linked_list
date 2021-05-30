@@ -4,43 +4,41 @@ require_relative 'node'
 
 # List made of nodes.rb
 class LinkedList
-  # attr_accessor :head, :tail
-
   def initialize
     @head = nil
-    @tail = @head
-    @size = 0
   end
 
   def append(value)
-    # if @head.value.nil? && @head.next_node.nil?
     if @head.nil?
       @head = Node.new(value)
-      @tail = @head
     else
-      @tail = Node.new(value)
-      @head.next_node = @tail
+      tail = find_tail
+      tail.next_node = Node.new(value)
     end
-    @size += 1
   end
 
   def prepend(value)
     @head = (@head.nil? ? Node.new(value) : Node.new(value, @head))
-    @size += 1
   end
 
-  # TODO: count amount of nodes, rather than track variable
   def size
-    @size
+    return 0 if @head.nil?
+
+    count = 1
+    count_node = @head
+    until count_node.next_node.nil?
+      count_node = count_node.next_node
+      count += 1
+    end
+    count
   end
 
   def head
-    @head
+    @head.value
   end
 
-  # TODO: return the tail by going through list
   def tail
-    @tail
+    find_tail.value
   end
 
   def at(index); end
@@ -67,4 +65,14 @@ class LinkedList
   def insert_at(value, index); end
 
   def remove_at(index); end
+
+  private
+
+  def find_tail
+    return @head if @head.nil?
+
+    tail_node = @head
+    tail_node = tail_node.next_node until tail_node.next_node.nil?
+    tail_node
+  end
 end

@@ -23,9 +23,6 @@ end
 
 puts list
 puts list.size
-list.append('name')
-puts list
-puts list.size
 list.prepend('age')
 puts list
 puts list.size
@@ -35,3 +32,14 @@ puts list.size
 list.prepend(666)
 puts list
 puts list.size
+list.append('name')
+puts list
+puts list.size
+list.append(401)
+puts list
+puts list.size
+list.append(4010)
+puts list
+puts list.size
+puts list.head
+puts list.tail
