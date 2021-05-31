@@ -9,15 +9,15 @@ class LinkedList
   end
 
   def append(value)
-    if @head.nil?
-      @head = Node.new(value)
-    else
-      iterate_list.next_node = Node.new(value)
-    end
+    return @head = Node.new(value) if @head.nil?
+
+    iterate_list.next_node = Node.new(value)
   end
 
   def prepend(value)
-    @head = (@head.nil? ? Node.new(value) : Node.new(value, @head))
+    return @head = Node.new(value) if @head.nil?
+
+    @head = Node.new(value, @head)
   end
 
   def size
@@ -48,12 +48,22 @@ class LinkedList
   def to_s
     return 'nil' if @head.nil?
 
-    current_node = @head
+    node = @head
     string = ''
-    until current_node.nil?
-      string += "( #{current_node.value} ) -> "
-      current_node = current_node.next_node
+    until node.nil?
+      string += "( #{node.value} ) -> "
+      node = node.next_node
     end
+    "#{string}nil\n"
+  end
+
+  # Experimenting... iterate stop on next node nil. to_s needs current node nil
+  # Also, how to pass reference to iterate node.value???
+  def to_s_new
+    return 'nil' if @head.nil?
+
+    string = ''
+    iterate_list { string += "( #{node.value} ) -> " }
     "#{string}nil\n"
   end
 
@@ -64,7 +74,7 @@ class LinkedList
 
   private
 
-  # TODO: rework into a yield, proc thingy? Done with 'iterate_list'
+  # TODO: rework into a yield or proc? Done with 'iterate_list'
   def find_tail
     return @head if @head.nil?
 
