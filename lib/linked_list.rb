@@ -91,7 +91,6 @@ class LinkedList
     index
   end
 
-  # TODO: Rework to use iterate_list?
   def to_s
     return 'nil' if @head.nil?
 
@@ -122,7 +121,6 @@ class LinkedList
     return 'nil' if @head.nil?
     return prepend(value) if index.zero?
 
-    # new_node = Node.new(value)
     count = 0
     node = @head
     until index == count
@@ -133,9 +131,26 @@ class LinkedList
     end
     previous_node.next_node = Node.new(value, node)
   end
-  # rubocop:enable Metrics/MethodLength
 
-  def remove_at(index); end
+  def remove_at(index)
+    return 'nil' if @head.nil?
+
+    node = @head
+    if index.zero?
+      @head = @head.next_node
+    else
+      count = 0
+      until count == index
+        count += 1
+        previous_node = node
+        node = node.next_node
+        break if node.next_node.nil?
+      end
+      previous_node.next_node = node.next_node
+    end
+    node.value
+  end
+  # rubocop:enable Metrics/MethodLength
 
   private
 

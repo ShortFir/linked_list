@@ -67,3 +67,10 @@ print 'insert_at(top, 0): ', list.insert_at('top', 0), "\n"
 puts list
 print 'insert_at(bottom, 10): ', list.insert_at('bottom', 10), "\n"
 puts list
+
+print 'remove_at(3): ', list.remove_at(3), "\n"
+puts list
+print 'remove_at(0): ', list.remove_at(0), "\n"
+puts list
+print 'remove_at(100): ', list.remove_at(100), "\n"
+puts list
