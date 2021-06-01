@@ -68,6 +68,13 @@ class LinkedList
 
   def contains?(value)
     return 'nil' if @head.nil?
+
+    node = @head
+    until node.value == value
+      node = node.next_node
+      return false if node.nil?
+    end
+    true
   end
 
   def find(value)
@@ -115,7 +122,7 @@ class LinkedList
   #   tail_node
   # end
 
-  # ...Seems unnecessary, but I'll kepp atm
+  # ...Seems unnecessary, but I'll keep atm
   # Return the last node in the list
   # Can take additional code in block
   def iterate_list

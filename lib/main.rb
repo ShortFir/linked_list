@@ -49,3 +49,9 @@ print 'Index 10: ', list.at(10), "\n"
 puts list
 print 'Pop: ', list.pop, "\n"
 puts list
+
+print 'contains?(pizza): ', list.contains?('pizza'), "\n"
+print 'contains?(401): ', list.contains?(401), "\n"
+print 'contains?(alien): ', list.contains?('alien'), "\n"
+print 'contains?(4010): ', list.contains?(4010), "\n"
+puts list
