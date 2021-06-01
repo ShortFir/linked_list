@@ -3,6 +3,7 @@
 require_relative 'node'
 
 # List made of nodes.rb
+# rubocop:disable Metrics/ClassLength
 class LinkedList
   def initialize
     @head = nil
@@ -116,7 +117,23 @@ class LinkedList
   # end
 
   # TODO: Extra credit
-  def insert_at(value, index); end
+  # rubocop:disable Metrics/MethodLength
+  def insert_at(value, index)
+    return 'nil' if @head.nil?
+    return prepend(value) if index.zero?
+
+    # new_node = Node.new(value)
+    count = 0
+    node = @head
+    until index == count
+      count += 1
+      previous_node = node
+      node = node.next_node
+      return append(value) if node.nil?
+    end
+    previous_node.next_node = Node.new(value, node)
+  end
+  # rubocop:enable Metrics/MethodLength
 
   def remove_at(index); end
 
@@ -145,3 +162,4 @@ class LinkedList
     node
   end
 end
+# rubocop:enable Metrics/ClassLength

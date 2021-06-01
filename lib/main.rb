@@ -58,3 +58,12 @@ print 'contains?(4010): ', list.contains?(4010), "\n"
 print 'find(401) - index: ', list.find(401), "\n"
 print 'find(wisdom) - index: ', list.find('wisdom'), "\n"
 print 'find(apples) - index: ', list.find('apples'), "\n"
+
+print 'insert_at(house, 3): ', list.insert_at('house', 3), "\n"
+puts list
+print 'insert_at(555, 1): ', list.insert_at(555, 1), "\n"
+puts list
+print 'insert_at(top, 0): ', list.insert_at('top', 0), "\n"
+puts list
+print 'insert_at(bottom, 10): ', list.insert_at('bottom', 10), "\n"
+puts list

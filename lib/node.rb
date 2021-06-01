@@ -9,6 +9,9 @@ class Node
     @next_node = next_node
   end
 
+  def to_s
+    @value.to_s
+  end
   # def value
   #   @value
   # end
