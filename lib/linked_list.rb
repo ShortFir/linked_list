@@ -21,7 +21,7 @@ class LinkedList
   end
 
   def size
-    return 0 if @head.nil?
+    return 'nil' if @head.nil?
 
     count = 1
     iterate_list { count += 1 }
@@ -29,20 +29,50 @@ class LinkedList
   end
 
   def head
+    return 'nil' if @head.nil?
+
     @head.value
   end
 
   def tail
+    return 'nil' if @head.nil?
+
     iterate_list.value
   end
 
-  def at(index); end
+  def at(index)
+    return 'nil' if @head.nil?
+    return 'negative index' if index.negative?
 
-  def pop; end
+    node = @head
+    count = 0
+    until index == count
+      count += 1
+      node = node.next_node
+      return 'nil' if node.nil?
+    end
+    node.value
+  end
 
-  def contains?(value); end
+  def pop
+    return 'nil' if @head.nil?
 
-  def find(value); end
+    node = @head
+    until node.next_node.next_node.nil?
+      node = node.next_node
+      next_node = node.next_node
+    end
+    node.next_node = nil
+    next_node.value
+  end
+
+  def contains?(value)
+    return 'nil' if @head.nil?
+  end
+
+  def find(value)
+    return 'nil' if @head.nil?
+  end
 
   # TODO: Rework to use iterate_list?
   def to_s
@@ -59,13 +89,15 @@ class LinkedList
 
   # Experimenting... iterate stop on next node nil. to_s needs current node nil
   # Also, how to pass reference to iterate node.value???
-  def to_s_new
-    return 'nil' if @head.nil?
+  # def to_s_new
+  #   return 'nil' if @head.nil?
 
-    string = ''
-    iterate_list { string += "( #{node.value} ) -> " }
-    "#{string}nil\n"
-  end
+  #   string = ''
+  #   iterate_list do
+  #     string += "( #{node.value} ) -> "
+  #   end
+  #   "#{string}nil\n"
+  # end
 
   # TODO: Extra credit
   def insert_at(value, index); end
@@ -75,14 +107,15 @@ class LinkedList
   private
 
   # TODO: rework into a yield or proc? Done with 'iterate_list'
-  def find_tail
-    return @head if @head.nil?
+  # def find_tail
+  #   return @head if @head.nil?
 
-    tail_node = @head
-    tail_node = tail_node.next_node until tail_node.next_node.nil?
-    tail_node
-  end
+  #   tail_node = @head
+  #   tail_node = tail_node.next_node until tail_node.next_node.nil?
+  #   tail_node
+  # end
 
+  # ...Seems unnecessary, but I'll kepp atm
   # Return the last node in the list
   # Can take additional code in block
   def iterate_list

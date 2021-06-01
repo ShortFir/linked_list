@@ -4,6 +4,16 @@ require_relative 'linked_list'
 
 list = LinkedList.new
 
+# Test with no elements in list, return nil basically
+puts list.size
+puts list.head
+puts list.tail
+puts list.at(100)
+puts list.pop
+puts list.to_s
+puts
+# Test with no elements in list, return nil basically
+
 puts list
 print 'Size: ', list.size, "\n"
 list.prepend('age')
@@ -30,3 +40,12 @@ print 'Size: ', list.size, "\n"
 
 print 'Head: ', list.head, "\n"
 print 'Tail: ', list.tail, "\n"
+
+print 'Index -5: ', list.at(-5), "\n"
+print 'Index 0: ', list.at(0), "\n"
+print 'Index 2: ', list.at(2), "\n"
+print 'Index 10: ', list.at(10), "\n"
+
+puts list
+print 'Pop: ', list.pop, "\n"
+puts list
