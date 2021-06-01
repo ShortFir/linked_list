@@ -79,6 +79,15 @@ class LinkedList
 
   def find(value)
     return 'nil' if @head.nil?
+
+    index = 0
+    node = @head
+    until node.value == value
+      index += 1
+      node = node.next_node
+      return 'nil' if node.nil?
+    end
+    index
   end
 
   # TODO: Rework to use iterate_list?

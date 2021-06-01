@@ -54,4 +54,7 @@ print 'contains?(pizza): ', list.contains?('pizza'), "\n"
 print 'contains?(401): ', list.contains?(401), "\n"
 print 'contains?(alien): ', list.contains?('alien'), "\n"
 print 'contains?(4010): ', list.contains?(4010), "\n"
-puts list
+
+print 'find(401) - index: ', list.find(401), "\n"
+print 'find(wisdom) - index: ', list.find('wisdom'), "\n"
+print 'find(apples) - index: ', list.find('apples'), "\n"
